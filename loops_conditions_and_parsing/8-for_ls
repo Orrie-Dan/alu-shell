@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-#script that displays The content of the current directory In a list format Where only the part of the name after the first dash is displayed
+#script that displays The content of the current directory In a list format Where only the part of the name after the first dash is display
 
 # Loop through each item in the current directory
 for item in *; do
     # Check if the item is a file or directory (skip hidden files)
     if [[ -e "$item" && "$item" != .* ]]; then
-        # Extract the part after the first dash
-        name_after_dash="${item#*-}"
-        
-        # Only display if there is a dash in the name
+        # Extract the part after the first dash if it exists
         if [[ "$item" == *-* ]]; then
+            name_after_dash="${item#*-}"
             echo "$name_after_dash"
+        else
+            echo "$item"
         fi
     fi
 done
