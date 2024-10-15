@@ -1,6 +1,6 @@
 #!/usr/env/bin bash
+#This script gives you information about the school file.
 
-# Define the file name
 FILE="school"
 
 # Check if the file exists
