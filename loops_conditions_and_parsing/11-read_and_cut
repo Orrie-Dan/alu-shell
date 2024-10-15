@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#this script displays the content of the file /etc/passwd.
+# Open /etc/passwd and read it line by line
+while IFS=: read -r username _ user_id _ _ home_directory _; do
+    # Print the required fields
+    echo "Username: $username"
+    echo "User ID: $user_id"
+    echo "Home Directory: $home_directory"
+    echo "-------------------------"
+done < /etc/passwd
+
