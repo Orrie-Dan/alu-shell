@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # this script  sort the data so you can get a better idea of what is going on.
 # Assuming the log file is named 'access.log'
-log_file="access.log"
 
 # Use awk to process the log file
 awk '{print $1 "" $9}' apache-access.log |sort |uniq -c | sort -rr 
