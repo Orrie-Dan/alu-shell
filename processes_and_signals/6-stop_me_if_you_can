@@ -9,7 +9,6 @@ if [ -z "$PID" ]; then
 else
   # Terminate the process using the proc filesystem
   echo "Terminating process with PID: $PID"
-  echo "SIGTERM" > /proc/$PID/attr/kill
+  echo "SIGTERM" > /proc/"$PID"/attr/kill
   echo "Process '4-to_infinity_and_beyond' has been terminated."
 fi
-
