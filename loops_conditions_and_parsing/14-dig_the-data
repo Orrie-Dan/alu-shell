@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# this script  sort the data so you can get a better idea of what is going on.
+# Assuming the log file is named 'access.log'
+log_file="access.log"
+
+# Use awk to process the log file
+awk '{
+    # Extract IP and HTTP status code
+    ip=$1
+    http_code=$9
+
+    # Increment the count for each combination of IP and HTTP code
+    count[ip, http_code]++
+}
+END {
+    # Print the occurrences in the required format
+    for (i in count) {
+        split(i, arr, SUBSEP)
+        print count[i], arr[1], arr[2]
+    }
+}' "$log_file" | sort -nr | awk '{print $1, $2, $3}'
+
