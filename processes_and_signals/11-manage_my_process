@@ -1,0 +1,47 @@
+#!usr/bin/env bash
+#script 11-manage_my_process that manages manage_my_process
+
+# Path to the PID file
+PID_FILE="/var/run/my_process.pid"
+
+case "$1" in
+  start)
+    # Start the process
+    if [ -f "$PID_FILE" ]; then
+      echo "manage_my_process is already running."
+      exit 1
+    fi
+
+    # Start manage_my_process in the background
+    /path/to/manage_my_process.sh &  # Adjust this path as necessary
+    echo $! > "$PID_FILE"  # Save the PID
+    echo "manage_my_process started."
+    ;;
+  
+  stop)
+    # Stop the process
+    if [ -f "$PID_FILE" ]; then
+      kill "$(cat "$PID_FILE")"  # Kill the process
+      rm "$PID_FILE"  # Remove the PID file
+      echo "manage_my_process stopped."
+    else
+      echo "manage_my_process is not running."
+    fi
+    ;;
+  
+  restart)
+    # Restart the process
+    if [ -f "$PID_FILE" ]; then
+      kill "$(cat "$PID_FILE")"  # Kill the process
+      rm "$PID_FILE"  # Remove the PID file
+    fi
+    /path/to/manage_my_process.sh &  # Adjust this path as necessary
+    echo $! > "$PID_FILE"  # Save the new PID
+    echo "manage_my_process restarted."
+    ;;
+  
+  *)
+    echo "Usage: manage_my_process {start|stop|restart}"
+    ;;
+esac
+
