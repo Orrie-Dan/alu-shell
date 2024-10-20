@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Display currently running processes and filter for lines containing the word "bash"
+
+ps aux | grep bash
+
