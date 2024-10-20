@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Display the PID and process name of processes whose name contains "bash"
+
+for pid in $(pgrep -f bash); do
+    echo "$pid $(basename /proc/$pid/exe)"
+done
+
