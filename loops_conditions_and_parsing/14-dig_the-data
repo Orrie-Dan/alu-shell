@@ -3,4 +3,4 @@
 # Assuming the log file is named 'access.log'
 
 # Use awk to process the log file
-awk '{print $1 "" $9}' apache-access.log |sort |uniq -c | sort -rr 
+awk '{print $1 "" $9}' apache-access.log |sort |uniq -c | sort -rn 
