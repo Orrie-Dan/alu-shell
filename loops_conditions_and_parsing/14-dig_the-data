@@ -4,19 +4,4 @@
 log_file="access.log"
 
 # Use awk to process the log file
-awk '{
-    # Extract IP and HTTP status code
-    ip=$1
-    http_code=$9
-
-    # Increment the count for each combination of IP and HTTP code
-    count[ip, http_code]++
-}
-END {
-    # Print the occurrences in the required format
-    for (i in count) {
-        split(i, arr, SUBSEP)
-        print count[i], arr[1], arr[2]
-    }
-}' "$log_file" | sort -nr | awk '{print $1, $2, $3}'
-
+awk '{print $1 "" $9}' apache-access.log |sort |uniq -c | sort -rr 
