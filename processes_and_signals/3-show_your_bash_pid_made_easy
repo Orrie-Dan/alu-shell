@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 # Display the PID and process name of processes whose name contains "bash"
 
+found=false
+
 for pid in /proc/[0-9]*; do
-    # Check if the process name contains "bash"
     if [[ -e "$pid/exe" ]]; then
         exe=$(basename "$pid/exe")
         if [[ "$exe" == *bash* ]]; then
             # Output the PID and the executable name
             echo "$(basename "$pid") $exe"
+            found=true
         fi
     fi
 done
+
+# If no process was found, exit without output
+if [[ "$found" == false ]]; then
+    exit 0
+fi
