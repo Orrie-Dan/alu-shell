@@ -9,7 +9,7 @@ case "$1" in
     # Start the process
     if [ -f "$PID_FILE" ]; then
       echo "manage_my_process is already running"
-      exit 1
+      exit 0
     fi
 
     # Start manage_my_process in the background
