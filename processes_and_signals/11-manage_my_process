@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 #script 11-manage_my_process that manages manage_my_process
 
 # Path to the PID file
